@@ -1,0 +1,74 @@
+@import "node_modules/vanilla-framework";
+@include vanilla;
+
+// Colors should match the image
+$card-highlight-color: #a87ca0;
+$card-link-color: #0086b9;
+$card-text-color: #363636;
+$card-divider-color: #cdcdcd;
+
+$bottom-divider-offset: $spv--x-large + $spv--small;
+
+// Spacing at the top of the page
+.page-gap {
+  padding-top: $spv--medium;
+}
+
+.blog-topic {
+  color: $card-text-color;
+  font-weight: 400;
+  .a {
+    color: $card-link-color;
+  }
+}
+
+.blog-title {
+  color: $card-link-color;
+}
+
+.blog-card-highlight {
+  @include vf-highlight-bar($card-highlight-color, top, false);
+}
+
+.blog-card-shadow {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+// Create dividers which exceed the picture length
+.blog-divider-top {
+  border-top: 1.33px dotted $card-divider-color;
+  margin: $spv--large 1px $spv--large 1px;
+  width: auto;
+  background-color: transparent;
+  height: 1px;
+  left: $sp-small;
+  position: absolute;
+  right: $sp-small;
+  top: $spv--x-large + $spv--x-small;
+}
+
+// Separate divider for the bottom of the card
+.blog-divider-bottom {
+  border-top: 1.33px dotted $card-divider-color;
+  margin: $spv--large 1px $spv--large 1px;
+  width: auto;
+  background-color: transparent;
+  height: 1px;
+  left: $sp-small;
+  position: absolute;
+  right: $sp-small;
+  bottom: $bottom-divider-offset;
+}
+
+// Spacing to ensure author and date don't overlap with divider
+.blog-card-article-spacing {
+  background-color: transparent;
+  height: $spv--x-large;
+}
+
+// Show article text in same position irrespective of card contents
+.blog-article {
+  @extend .blog-topic;
+  position: absolute;
+  bottom: $bottom-divider-offset - $spv--large;
+}
